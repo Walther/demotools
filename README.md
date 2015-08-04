@@ -5,8 +5,8 @@
 ## Usage
 
 1. Write your intro in the `introtool.js`. Shaders should be easy to write into the `fragmentCode` and `vertexCode` [template strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings). Template strings allow multiline strings, so the shader code can be pretty on many lines and correctly indented.
-2. Build the demo with `ruby pnginator.rb introtool.js demo.html`
-3. Open `demo.html` in your web browser and enjoy the demo
+2. Build the demo with `ruby pnginator.rb introtool.js intro.html`
+3. Open `intro.html` in your web browser and enjoy the demo
 
 ## Optional optimization
 
