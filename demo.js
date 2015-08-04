@@ -9,10 +9,57 @@ var gl = canvas.getContext("experimental-webgl");
 var t0 = (new Date()).getTime();  // absolute starting time
 var t = 0;                        // running time, milliseconds from starting time
 var time;                         // running time, seconds
+var demoLength = 10;              // demo length in seconds, for cutting rendering of audio+video
 
 // Some other initializations to have public scope
-var shaderProgram;
+var shaderProgram;                // shader program object
 var resolution;                   // viewport resolution
+
+/* Music stack. Thanks for Xard for helping at Assembly summer 2015 :) */
+// create context
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+var ctx = new AudioContext();
+
+// how to create an instrument
+var kick = function(audiotime, frequency, volume){
+  var o = ctx.createOscillator();
+  o.type = 'sine';
+  o.frequency.exponentialRampToValueAtTime(50.0, audiotime + 1);
+  o.frequency.setValueAtTime(frequency, audiotime);
+
+  var gain = ctx.createGain();
+  gain.gain.setValueAtTime(volume, audiotime);
+  gain.gain.exponentialRampToValueAtTime(0.001, audiotime + 0.5);
+  o.connect(gain);
+  gain.connect(ctx.destination);
+
+  return o;
+};
+
+// How to define notes. Minimal notesheet
+var kicknotes = [
+  {'f':'100.0','l':1,'v':1.0}
+];
+
+function playAll(instrument, notes, repeat) {
+    var o, audiotime=t, arrayLength = notes.length, playlength = 0, bpm = 120;
+
+    while(audiotime <= demoLength && repeat == true){
+      for (var i = 0; i < arrayLength; i++) {
+          playlength = 1/(bpm/60) * notes[i].l;
+          var o = instrument(audiotime, notes[i].f, notes[i].v);
+          o.start(audiotime);
+          o.stop(audiotime + playlength);
+          audiotime += playlength;
+      }
+    }
+
+};
+
+// call playAll with instrument, notesheet, and a boolean for repeat
+playAll(kick, kicknotes, true);
+
+// End music stack
 
 function main() {
 
