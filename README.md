@@ -4,8 +4,4 @@
 
 ## Acknowledgements
 
-`pnginator.rb` is included in this repository, as it is helpful for building the final tiny "executable". I don't claim ownership to it though:
-
-- modified by Walther,
-- from a [gist](https://gist.github.com/gasman/2560551) written by [Gasman](http://matt.west.co.tt),
-- from an original idea by [Daeken](http://daeken.com/superpacking-js-demos)
+`pnginator.rb` is included in this repository, as it is helpful for building the final tiny "executable". I don't claim ownership to it though: I modified it from a [gist](https://gist.github.com/gasman/2560551) written by [Gasman](http://matt.west.co.tt), based on an original idea by [Daeken](http://daeken.com/superpacking-js-demos)
