@@ -124,13 +124,17 @@ function main() {
 }
 
 
-function draw() {  
-  window.requestAnimationFrame(draw); // For every requested new frame, draw!
+function draw() {
+  t = (new Date()).getTime() - t0;    // Update time on every frame
+  time = t * 0.001;                   // ...and normalize it to seconds
+
+  if (time <= demoLength) {             // If demo has not ended,
+    window.requestAnimationFrame(draw); // for every requested new frame, draw!
+  }                                     // This handily stops drawing at last frame, leaving it visible. Neat!
+
   // clear the screen before drawing the new frame
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-  t = (new Date()).getTime() - t0;    // Update time on every frame
-  time = t * 0.001;                   // ...and normalize it to seconds
 
   // pass in the time to the shader programs from the canvas context
   gl.uniform1f(gl.getUniformLocation(shaderProgram, 'time'), time);
