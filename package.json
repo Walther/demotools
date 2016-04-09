@@ -1,0 +1,27 @@
+{
+  "name": "introtool.js",
+  "version": "0.0.1",
+  "description": "`introtool.js` is a minimalistic tool for making WebGL intros. It aims to have as little javascript as possible, while providing you with a WebGL context to draw your shaders on. It also provides a minimal tracker for creating music.",
+  "main": "introtool.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Walther/introtool.js.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Walther/introtool.js/issues"
+  },
+  "homepage": "https://github.com/Walther/introtool.js#readme",
+  "dependencies": {
+    "browserify-shader": "^0.1.2",
+    "glslmin": "0.0.0",
+    "gulp": "^3.9.1",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0",
+    "webpack-glsl-loader": "^1.0.1"
+  }
+}

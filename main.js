@@ -57,33 +57,14 @@ function playAll(instrument, notes, repeat) {
 };
 
 // call playAll with instrument, notesheet, and a boolean for repeat
-playAll(kick, kicknotes, true);
+//playAll(kick, kicknotes, true);
 
 // End music stack
 
 function main() {
 
-  // Define shaders. ECMAScript 6 template strings multi-line goodness :)
-  // Fragment shader
-  var fragmentCode = `
-    // define high precision for floats
-    precision highp float;
-    // time and resolution passed from js side into shader world
-    uniform float time;
-    uniform vec2 resolution;
-
-    void main(){
-      gl_FragColor=vec4(cos(time),sin(time*0.3),sin(time*0.7),1.0); // simple color gradient blink
-    }
-  `;
-
-  // Vertex shader
-  var vertexCode = `
-    attribute vec3 aVertexPosition;
-    void main(void) {
-      gl_Position = vec4(aVertexPosition, 1.0);
-    }
-  `;
+  var vertexCode = require('./vertex.glsl');
+  var fragmentCode = require('./fragment.glsl');
 
   function getShader(gl, id, type) {
     var shader;
@@ -143,7 +124,7 @@ function draw() {
   gl.viewportWidth = canvas.width;
   gl.viewportHeight = canvas.height;
   gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
-  
+
   // pass in the resolution to the shader programs from the canvas context
   gl.uniform2f(gl.getUniformLocation(shaderProgram, 'resolution'), gl.viewportWidth, gl.viewportHeight);
 
@@ -168,7 +149,7 @@ function draw() {
   function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    drawStuff(); 
+    drawStuff();
   }
   resizeCanvas();
   function drawStuff() {
