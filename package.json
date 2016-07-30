@@ -22,6 +22,7 @@
     "gulp": "^3.9.1",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0",
+    "webpack": "^1.13.1",
     "webpack-glsl-loader": "^1.0.1"
   }
 }

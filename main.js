@@ -57,7 +57,7 @@ function playAll(instrument, notes, repeat) {
 };
 
 // call playAll with instrument, notesheet, and a boolean for repeat
-//playAll(kick, kicknotes, true);
+playAll(kick, kicknotes, true);
 
 // End music stack
 
