@@ -35,9 +35,10 @@ void main(){
     rayDir = reflect(rayDir, normal);
   }
 
-  // vignette
-  vec2 uv = gl_FragCoord.xy / resolution.xy-vec2(.5);
+  // Post processing
+  color = filmgrain(color);
+  color = vignette(color, 1.0);
 
-  vec4 src = vec4(1.0,1.0,1.0,1.0);
+  // output with full alpha
   gl_FragColor = vec4(color, 1.0);
 }

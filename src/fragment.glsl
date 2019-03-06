@@ -9,6 +9,8 @@ const int MAX_RECURSE = 1; // Reflections
 
 @import ./shaders/utils;
 @import ./shaders/sugarcube;
+@import ./shaders/filmgrain;
+@import ./shaders/vignette;
 @import ./shaders/distancefunction;
 @import ./shaders/raymarch;
 @import ./shaders/main;
