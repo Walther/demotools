@@ -2,7 +2,7 @@
 void main(){
 
   // Camera setup
-  vec3 cameraOrigin = vec3(2.0, 0.0, 0.0);
+  vec3 cameraOrigin = vec3(0.0, 0.0, -2.0);
   vec3 cameraTarget = vec3(0.0, 0.0, 0.0);
   vec3 upDirection = vec3(0.0, 1.0, 0.0);
   vec3 cameraDir = normalize(cameraTarget - cameraOrigin);
@@ -15,8 +15,7 @@ void main(){
   // Call raymarch from camera origin
   vec3 pos = cameraOrigin;
   vec3 normal;
-  vec3 color = vec3(0.0); // default color
-  //vec3 color = vec3(0.153, 0.157, 0.133); // dark warm grey
+  vec3 color = vec3(0.153, 0.157, 0.133); // dark warm grey
 
   // Iterate
   for (int i = 0; i < MAX_RECURSE; i++) {
@@ -27,7 +26,7 @@ void main(){
     // Lighting, from camera
     diffuse = max(0.0, dot(-rayDir, normal));
     specular = pow(diffuse, 32.0);
-    color += vec3(diffuse + specular - float(i) +0.3);
+    color += vec3(diffuse + specular - float(i));
 
 
     // Change direction for re-march.
@@ -36,16 +35,9 @@ void main(){
     rayDir = reflect(rayDir, normal);
   }
 
-  // Bias the color a bit
-  color = 0.1+color*0.7;
-
-  //color = vec3(cos(time),sin(time*0.3),sin(time*0.7));
-
   // vignette
   vec2 uv = gl_FragCoord.xy / resolution.xy-vec2(.5);
 
   vec4 src = vec4(1.0,1.0,1.0,1.0);
-  gl_FragColor = vec4(color * exp(-4.0*(uv.x*uv.x+uv.y*uv.y)), 1.0);
-
-  //gl_FragColor = vec4(color, 1.0);
+  gl_FragColor = vec4(color, 1.0);
 }

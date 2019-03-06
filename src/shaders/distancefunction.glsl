@@ -9,7 +9,10 @@ float distfunc(vec3 pos)
   cubeSpace *= rotateX(time);
   cubeSpace *= rotateZ(time);
   // Insert cube
-  float cube = fBox(cubeSpace, vec3(0.2));
+
+  //pMod3(cubeSpace, vec3(3.0));
+  //float cube = fBox(cubeSpace, vec3(1.0));
+  float cube = sugarcube(cubeSpace, 1.0);
 
   // Dodge the camera
   pos += vec3(1.5);
