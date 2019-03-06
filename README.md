@@ -1,6 +1,6 @@
-# introtool.js
+# demotool
 
-`introtool.js` is a minimalistic tool for making WebGL intros. It aims to have as little javascript as possible, while providing you with a WebGL context to draw your shaders on. It also provides a minimal tracker for creating music.
+`demotool` is a minimalistic tool for making WebGL intros. It aims to have as little javascript as possible, while providing you with a WebGL context to draw your shaders on. It also provides a minimal tracker for creating music.
 
 ## Usage
 
