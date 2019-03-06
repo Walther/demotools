@@ -16,7 +16,9 @@
     "url": "https://github.com/Walther/introtool.js/issues"
   },
   "homepage": "https://github.com/Walther/introtool.js#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/preset-env": "^7.3.4",
     "webpack": "^4.29.6",
     "webpack-glsl-loader": "^1.0.1"
   }

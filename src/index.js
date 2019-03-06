@@ -1,35 +1,35 @@
 // Tiny demo platform by Walther
 
 // Set up canvas to draw on + WebGL context for it
-var canvas = document.createElement("canvas");
+const canvas = document.createElement("canvas");
 document.body.appendChild(canvas);
-var gl = canvas.getContext("experimental-webgl");
+const gl = canvas.getContext("experimental-webgl");
 
 // Wibbly wobbly timey-wimey stuff, also in public scope
-var t0 = new Date().getTime(); // absolute starting time
-var t = 0; // running time, milliseconds from starting time
-var time; // running time, seconds
-var demoLength = 10; // demo length in seconds, for cutting rendering of audio+video
+const t0 = new Date().getTime(); // absolute starting time
+let t = 0; // running time, milliseconds from starting time
+let time; // running time, seconds
+const demoLength = 10; // demo length in seconds, for cutting rendering of audio+video
 const timeLimit = false;
 const playSound = false;
 
 // Some other initializations to have public scope
-var shaderProgram; // shader program object
-//var resolution; // viewport resolution
+let shaderProgram; // shader program object
+//const resolution; // viewport resolution
 
 /* Music stack. Thanks for Xard for helping at Assembly summer 2015 :) */
 // create context
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
-var ctx = new AudioContext();
+const ctx = new AudioContext();
 
 // how to create an instrument
-var kick = function(audiotime, frequency, volume) {
-  var o = ctx.createOscillator();
+const kick = function(audiotime, frequency, volume) {
+  let o = ctx.createOscillator();
   o.type = "sine";
   o.frequency.exponentialRampToValueAtTime(50.0, audiotime + 1);
   o.frequency.setValueAtTime(frequency, audiotime);
 
-  var gain = ctx.createGain();
+  let gain = ctx.createGain();
   gain.gain.setValueAtTime(volume, audiotime);
   gain.gain.exponentialRampToValueAtTime(0.001, audiotime + 0.5);
   o.connect(gain);
@@ -39,19 +39,19 @@ var kick = function(audiotime, frequency, volume) {
 };
 
 // How to define notes. Minimal notesheet
-var kicknotes = [{ f: "100.0", l: 1, v: 1.0 }];
+const kicknotes = [{ f: "100.0", l: 1, v: 1.0 }];
 
 function playAll(instrument, notes, repeat) {
-  var o,
+  let o,
     audiotime = t,
     arrayLength = notes.length,
     playlength = 0,
     bpm = 120;
 
   while (audiotime <= demoLength && repeat === true) {
-    for (var i = 0; i < arrayLength; i++) {
+    for (const i = 0; i < arrayLength; i++) {
       playlength = (1 / (bpm / 60)) * notes[i].l;
-      var o = instrument(audiotime, notes[i].f, notes[i].v);
+      const o = instrument(audiotime, notes[i].f, notes[i].v);
       o.start(audiotime);
       o.stop(audiotime + playlength);
       audiotime += playlength;
@@ -67,11 +67,11 @@ if (playSound) {
 // End music stack
 
 function main() {
-  var vertexCode = require("./vertex.glsl");
-  var fragmentCode = require("./fragment.glsl");
+  const vertexCode = require("./vertex.glsl");
+  const fragmentCode = require("./fragment.glsl");
 
   function getShader(gl, id, type) {
-    var shader;
+    let shader;
     if (type == "fragment") {
       shader = gl.createShader(gl.FRAGMENT_SHADER);
     } else if (type == "vertex") {
@@ -86,8 +86,8 @@ function main() {
   }
 
   // Compile shaders
-  var fragmentShader = getShader(gl, fragmentCode, "fragment");
-  var vertexShader = getShader(gl, vertexCode, "vertex");
+  const fragmentShader = getShader(gl, fragmentCode, "fragment");
+  const vertexShader = getShader(gl, vertexCode, "vertex");
 
   shaderProgram = gl.createProgram();
   gl.attachShader(shaderProgram, vertexShader);
@@ -139,8 +139,8 @@ function draw() {
   );
 
   // Define some vertices
-  var trianglePosBuffer;
-  var trianglePos = [
+  let trianglePosBuffer;
+  const trianglePos = [
     -1.0,
     -1.0,
     1.0,
