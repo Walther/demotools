@@ -10,6 +10,8 @@ var t0 = new Date().getTime(); // absolute starting time
 var t = 0; // running time, milliseconds from starting time
 var time; // running time, seconds
 var demoLength = 10; // demo length in seconds, for cutting rendering of audio+video
+const timeLimit = false;
+const playSound = false;
 
 // Some other initializations to have public scope
 var shaderProgram; // shader program object
@@ -58,7 +60,9 @@ function playAll(instrument, notes, repeat) {
 }
 
 // call playAll with instrument, notesheet, and a boolean for repeat
-playAll(kick, kicknotes, true);
+if (playSound) {
+  playAll(kick, kicknotes, true);
+}
 
 // End music stack
 
@@ -111,7 +115,7 @@ function draw() {
   t = new Date().getTime() - t0; // Update time on every frame
   time = t * 0.001; // ...and normalize it to seconds
 
-  if (time <= demoLength) {
+  if (!timeLimit || time <= demoLength) {
     // If demo has not ended,
     window.requestAnimationFrame(draw); // for every requested new frame, draw!
   } // This handily stops drawing at last frame, leaving it visible. Neat!
