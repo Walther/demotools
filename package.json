@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/Walther/introtool.js#readme",
   "dependencies": {
-    "webpack": "^1.13.1",
+    "webpack": "^4.29.6",
     "webpack-glsl-loader": "^1.0.1"
   }
 }

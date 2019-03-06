@@ -1,5 +1,3 @@
-const webpack = require("webpack");
-
 module.exports = {
   mode: "production",
   module: {
@@ -10,5 +8,7 @@ module.exports = {
       }
     ]
   },
-  plugins: [new webpack.optimize.UglifyJsPlugin({ minimize: true })]
+  optimization: {
+    minimize: true
+  }
 };
