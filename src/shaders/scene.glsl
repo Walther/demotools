@@ -1,5 +1,5 @@
 // Distance field: insert objects here
-float distfunc(vec3 pos)
+float scene(vec3 pos)
 {
   float field;
 
