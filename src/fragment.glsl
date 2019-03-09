@@ -10,6 +10,7 @@ const int MAX_RECURSE = 1; // Reflections
 @import ./shaders/hg_sdf;
 @import ./shaders/utils;
 @import ./shaders/sugarcube;
+@import ./shaders/menger_sponge;
 @import ./shaders/filmgrain;
 @import ./shaders/vignette;
 @import ./shaders/scene;
