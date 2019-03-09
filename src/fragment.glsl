@@ -7,6 +7,7 @@ const float MAX_DIST = 32.0;
 const float EPSILON = 0.001;
 const int MAX_RECURSE = 1; // Reflections
 
+@import ./shaders/hg_sdf;
 @import ./shaders/utils;
 @import ./shaders/sugarcube;
 @import ./shaders/filmgrain;

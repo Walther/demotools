@@ -13,6 +13,7 @@ float distfunc(vec3 pos)
   //pMod3(cubeSpace, vec3(3.0));
   //float cube = fBox(cubeSpace, vec3(1.0));
   float cube = sugarcube(cubeSpace, 1.0);
+  //float cube = fIcosahedron(cubeSpace, 1.0);
 
   // Dodge the camera
   pos += vec3(1.5);

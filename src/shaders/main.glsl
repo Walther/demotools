@@ -1,6 +1,9 @@
 // Main drawing loop
 void main(){
 
+  // Initialize hg_sdf
+  hg_sdf_init();
+
   // Camera setup
   vec3 cameraOrigin = vec3(0.0, 0.0, -2.0);
   vec3 cameraTarget = vec3(0.0, 0.0, 0.0);
