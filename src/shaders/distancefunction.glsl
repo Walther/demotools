@@ -6,8 +6,8 @@ float distfunc(vec3 pos)
   // Save space for cube
   vec3 cubeSpace = pos;
   // rotate cube space
-  cubeSpace *= rotateX(time);
-  cubeSpace *= rotateZ(time);
+  cubeSpace *= rotateX(0.5 * iTime);
+  cubeSpace *= rotateZ(0.5 * iTime);
   // Insert cube
 
   //pMod3(cubeSpace, vec3(3.0));
@@ -19,7 +19,7 @@ float distfunc(vec3 pos)
 
   // Combine objects
   field = 1.0;
-  field = min(field, cube);
+  field = unionSDF(field, cube);
 
   return field;
 }

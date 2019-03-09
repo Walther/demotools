@@ -1,6 +1,6 @@
 precision highp float;
-uniform float time;
-uniform vec2 resolution;
+uniform float iTime;
+uniform vec2 iResolution;
 
 const int MAX_ITER = 128;
 const float MAX_DIST = 32.0;

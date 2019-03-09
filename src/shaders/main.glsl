@@ -8,8 +8,8 @@ void main(){
   vec3 cameraDir = normalize(cameraTarget - cameraOrigin);
   vec3 cameraRight = normalize(cross(upDirection, cameraOrigin));
   vec3 cameraUp = cross(cameraDir, cameraRight);
-  vec2 screenPos = -1.0 + 2.0 * gl_FragCoord.xy / resolution.xy; // screenPos can range from -1 to 1
-  screenPos.x *= resolution.x / resolution.y;                   // Correct aspect ratio
+  vec2 screenPos = -1.0 + 2.0 * gl_FragCoord.xy / iResolution.xy; // screenPos can range from -1 to 1
+  screenPos.x *= iResolution.x / iResolution.y;                   // Correct aspect ratio
   vec3 rayDir = normalize(cameraRight * screenPos.x + cameraUp * screenPos.y + cameraDir);
 
   // Call raymarch from camera origin

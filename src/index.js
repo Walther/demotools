@@ -11,7 +11,7 @@ let t = 0; // running time, milliseconds from starting time
 let time; // running time, seconds
 const demoLength = 10; // demo length in seconds, for cutting rendering of audio+video
 const timeLimit = false;
-const playSound = true;
+const playSound = false;
 
 // Music stack
 const { music } = require("./music");
@@ -80,7 +80,7 @@ function draw() {
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
   // pass in the time to the shader programs from the canvas context
-  gl.uniform1f(gl.getUniformLocation(shaderProgram, "time"), time);
+  gl.uniform1f(gl.getUniformLocation(shaderProgram, "iTime"), time);
 
   // set viewport start corner at (0,0), set viewport width+height = w+h of the canvas gl context
   gl.viewportWidth = canvas.width;
@@ -89,7 +89,7 @@ function draw() {
 
   // pass in the resolution to the shader programs from the canvas context
   gl.uniform2f(
-    gl.getUniformLocation(shaderProgram, "resolution"),
+    gl.getUniformLocation(shaderProgram, "iResolution"),
     gl.viewportWidth,
     gl.viewportHeight
   );

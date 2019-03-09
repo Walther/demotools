@@ -1,3 +1,16 @@
+// Set operations
+float intersectSDF(float distA, float distB) {
+    return max(distA, distB);
+}
+
+float unionSDF(float distA, float distB) {
+    return min(distA, distB);
+}
+
+float differenceSDF(float distA, float distB) {
+    return max(distA, -distB);
+}
+
 // Maximum/minumum elements of a vector
 float vmax(vec3 v) {
   return max(max(v.x, v.y), v.z);

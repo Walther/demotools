@@ -9,5 +9,5 @@ float sugarcube(vec3 pos, float radius) {
     pMod3(spherepos, repeat);
     float sphere = fSphere(spherepos, spheresize);
     float box = fBox(sugarcubepos, vec3(cubesize));
-    return max(box, -sphere);
+    return intersectSDF(box, -sphere);
 }
