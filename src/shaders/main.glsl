@@ -18,7 +18,7 @@ void main(){
   // Call raymarch from camera origin
   vec3 pos = cameraOrigin;
   vec3 normal;
-  vec3 color = vec3(0.153, 0.157, 0.133); // dark warm grey
+  vec3 color = BASE_COLOR;
 
   // Iterate
   for (int i = 0; i < MAX_RECURSE; i++) {
@@ -29,7 +29,7 @@ void main(){
     // Lighting, from camera
     diffuse = max(0.0, dot(-rayDir, normal));
     specular = pow(diffuse, 32.0);
-    color += vec3(diffuse + specular - float(i));
+    color += max(vec3(diffuse + specular - float(i)), 0.0);
 
 
     // Change direction for re-march.
