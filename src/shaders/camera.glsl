@@ -14,17 +14,24 @@ vec3 camera() {
   // Call raymarch from camera origin
   vec3 pos = cameraOrigin;
   vec3 normal;
+  float material;
   // Iterate
   for (int i = 0; i < MAX_RECURSE; i++) {
-    rayMarch(pos, rayDir, normal);
+    rayMarch(pos, rayDir, normal, material);
 
     float diffuse, specular;
 
     // Lighting, from camera
     diffuse = max(0.0, dot(-rayDir, normal));
     specular = pow(diffuse, 32.0);
-    color += max(vec3(diffuse + specular - float(i)), 0.0);
-
+    color += max(vec3(diffuse  - float(i)), 0.0);
+    if (material == 1.0) {
+      color += vec3(0.2, 0.0, 0.0);
+    } else if (material == 2.0) {
+      color += vec3(0.0, 0.0, 0.2);
+    } else if (material == 3.0) {
+      color += vec3(0.0, 0.3, 0.0);
+    }
 
     // Change direction for re-march.
     pos -= rayDir*0.1;
