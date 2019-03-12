@@ -12,8 +12,8 @@ vec2 scene(vec3 pos)
   //pMod3(rotateSpace, vec3(4.0)); // repeats in 3d
 
   float cube = fBox(rotateSpace, vec3(0.8));
-  float sphere = fSphere(rotateSpace, (1.1));
-  float ico = fIcosahedron(rotateSpace, (1.));
+  float sphere = fSphere(rotateSpace, 1.1);
+  float ico = fIcosahedron(rotateSpace, 1.);
 
   // Combine objects
   field = MAX_DIST;
@@ -22,11 +22,11 @@ vec2 scene(vec3 pos)
   field = unionSDF(field, ico);
   
   // Select material based on what we hit
-  if (field < cube) {
+  if (cube <= field) {
     material = 1.0;
-  } else if (field < sphere) {
+  } else if (sphere <= field) {
     material = 2.0;
-  } else {
+  } else if (ico <= field) {
     material = 3.0;
   }
 

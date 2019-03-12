@@ -25,12 +25,15 @@ vec3 camera() {
     diffuse = max(0.0, dot(-rayDir, normal));
     specular = pow(diffuse, 32.0);
     color += max(vec3(diffuse  - float(i)), 0.0);
+
+
+    // Object colors
     if (material == 1.0) {
-      color += vec3(0.2, 0.0, 0.0);
+      color *= vec3(0.8, 0.0, 0.0);
     } else if (material == 2.0) {
-      color += vec3(0.0, 0.0, 0.2);
+      color *= vec3(0.0, 0.0, 0.8);
     } else if (material == 3.0) {
-      color += vec3(0.0, 0.3, 0.0);
+      color *= vec3(0.0, 0.8, 0.0);
     }
 
     // Change direction for re-march.
