@@ -11,6 +11,7 @@ vec2 scene(vec3 pos)
 
   pMod3(rotateSpace, vec3(4.0)); // repeats in 3d
 
+  /*
   float cube = fBox(rotateSpace, vec3(0.8));
   float sphere = fSphere(rotateSpace, 1.1);
   float ico = fIcosahedron(rotateSpace, 1.);
@@ -28,7 +29,12 @@ vec2 scene(vec3 pos)
     material = 2.0;
   } else if (ico <= field) {
     material = 3.0;
-  }
+  };
+  */
+
+  vec2 menger = mengerSponge(rotateSpace, 0.8);
+  field = menger.x;
+  material = menger.y;
 
   return vec2(field, material);
 }

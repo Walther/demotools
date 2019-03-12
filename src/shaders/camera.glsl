@@ -37,12 +37,19 @@ vec3 camera() {
 
     // Object colors
     if (material == 1.0) {
-      color *= vec3(0.8, 0.0, 0.0);
+      color *= MONOKAI_ORANGE;
     } else if (material == 2.0) {
-      color *= vec3(0.0, 0.0, 0.8);
+      color *= MONOKAI_BLUE;
     } else if (material == 3.0) {
-      color *= vec3(0.0, 0.8, 0.0);
+      color *= MONOKAI_PINK;
+    } else if (material == 4.0) {
+      color *= MONOKAI_YELLOW;
+    } else if (material == 5.0) {
+      color *= MONOKAI_PURPLE;
+    } else if (material == 6.0) {
+      color *= MONOKAI_GREEN;
     }
+    
 
     // Change direction for re-march.
     pos -= rayDir*0.1;

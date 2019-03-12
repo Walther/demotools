@@ -17,7 +17,7 @@ float sdCross( in vec3 p )
 }
 
 // Inspired by http://iquilezles.org/www/articles/menger/menger.htm
-float mengerSponge(vec3 pos, float size, int iter) { 
+vec2 mengerSponge(vec3 pos, float size) { 
     // needs to be a compile-time constant
     const int sponge_iter = 6;
 
@@ -27,16 +27,19 @@ float mengerSponge(vec3 pos, float size, int iter) {
     vec3 crossSpace;
     float cross1;
     float pow_3 = 1.0;
+    float material = 1.0; // for coloring based on iter
 
     for (int i = 0; i < sponge_iter; i++) {
         crossSpace = mod( pos * pow_3, 2.0 ) -1.0;
         pow_3 *= 3.0; // increase power of three
         crossSpace = 1.0 - 3.0*abs(crossSpace);
 
-        //cross1 = fCross(crossSpace, 1.0)/pow_3;
         cross1 = sdCross(crossSpace)/pow_3;
         menger = max(menger, cross1);
+        if (menger <= cross1) {
+            material+=1.;
+        }
     }
 
-    return menger;
+    return vec2(menger, material);
 }
