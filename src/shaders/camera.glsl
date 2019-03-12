@@ -19,12 +19,20 @@ vec3 camera() {
   for (int i = 0; i < MAX_RECURSE; i++) {
     rayMarch(pos, rayDir, normal, material);
 
-    float diffuse, specular;
-
     // Lighting, from camera
+    float diffuse, specular;
+    float dist = distance(cameraOrigin, pos);
+    float distanceFalloff = 1.0 - 0.002 * pow(dist, 2.0);
+
     diffuse = max(0.0, dot(-rayDir, normal));
     specular = pow(diffuse, 32.0);
-    color += max(vec3(diffuse  - float(i)), 0.0);
+    color += max(
+      vec3(
+        diffuse*distanceFalloff +
+        specular*distanceFalloff
+      ),
+      0.0
+    );
 
 
     // Object colors

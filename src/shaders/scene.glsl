@@ -9,7 +9,7 @@ vec2 scene(vec3 pos)
   rotateSpace *= rotateX(0.1 * iTime);
   rotateSpace *= rotateZ(0.1 * iTime);
 
-  //pMod3(rotateSpace, vec3(4.0)); // repeats in 3d
+  pMod3(rotateSpace, vec3(4.0)); // repeats in 3d
 
   float cube = fBox(rotateSpace, vec3(0.8));
   float sphere = fSphere(rotateSpace, 1.1);
