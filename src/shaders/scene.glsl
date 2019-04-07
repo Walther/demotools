@@ -5,36 +5,20 @@ vec2 scene(vec3 pos)
   float field;
   float material;
 
-  vec3 rotateSpace = pos;
-  rotateSpace *= rotateX(0.1 * iTime);
-  rotateSpace *= rotateZ(0.1 * iTime);
+  // Move a bit forward to dodge a massive hill that the camera would fly through
+  pos.z += 25.; 
+  // Move forward over time to explore the scene
+  pos.z += 2.*iTime;
 
-  pMod3(rotateSpace, vec3(4.0)); // repeats in 3d
+  // Add in the hills
+  float hills = hills(pos);
+  field = hills;
 
-  /*
-  float cube = fBox(rotateSpace, vec3(0.8));
-  float sphere = fSphere(rotateSpace, 1.1);
-  float ico = fIcosahedron(rotateSpace, 1.);
-
-  // Combine objects
-  field = MAX_DIST;
-  field = unionSDF(field, cube);
-  field = unionSDF(field, sphere);
-  field = unionSDF(field, ico);
-  
-  // Select material based on what we hit
-  if (cube <= field) {
-    material = 1.0;
-  } else if (sphere <= field) {
-    material = 2.0;
-  } else if (ico <= field) {
-    material = 3.0;
-  };
-  */
-
-  vec2 menger = mengerSponge(rotateSpace, 0.8);
-  field = menger.x;
-  material = menger.y;
+  if (hills <= field) {
+    // If we hit a hill, make it green
+    material = 6.0;
+  }
+  field = hills;
 
   return vec2(field, material);
 }

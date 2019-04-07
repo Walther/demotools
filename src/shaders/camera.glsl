@@ -48,6 +48,9 @@ vec3 camera() {
       color *= MONOKAI_PURPLE;
     } else if (material == 6.0) {
       color *= MONOKAI_GREEN;
+    } else {
+      // TODO: remove temporary hack to make the default color blue; for a sky
+      color *= 2.0*MONOKAI_BLUE;
     }
     
 
