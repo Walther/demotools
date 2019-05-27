@@ -8,7 +8,7 @@ void main(){
   vec3 color = camera();
 
   // Post processing
-  color = filmgrain(color);
+  color = filmgrain(color, gl_FragCoord.xy, 0.001*iTime);
   color = vignette(color, 1.0);
 
   // output with full alpha
