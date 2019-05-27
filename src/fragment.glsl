@@ -12,8 +12,6 @@ const vec3 BASE_COLOR = vec3(0.153, 0.157, 0.133); // don't use pure black
 // any functions used in files have to have been defined in earlier files
 @import ./shaders/hg_sdf;
 @import ./shaders/utils;
-@import ./shaders/sugarcube;
-@import ./shaders/menger_sponge;
 @import ./shaders/filmgrain;
 @import ./shaders/vignette;
 @import ./shaders/scene;

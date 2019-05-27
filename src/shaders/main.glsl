@@ -1,9 +1,6 @@
 // Main drawing loop
 void main(){
 
-  // Initialize hg_sdf
-  hg_sdf_init();
-
   // Run the camera
   vec3 color = camera();
 
