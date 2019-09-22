@@ -10,8 +10,8 @@ const t0 = new Date().getTime(); // absolute starting time
 let t = 0; // running time, milliseconds from starting time
 let time; // running time, seconds
 const demoLength = 10; // demo length in seconds, for cutting rendering of audio+video
-const timeLimit = false;
-const playSound = false;
+const timeLimit = true;
+const playSound = true;
 
 // Music stack
 const { music } = require("./music");

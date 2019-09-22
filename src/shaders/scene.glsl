@@ -24,13 +24,13 @@ vec2 scene(vec3 pos)
   vec3 box7space = rotateSpace + vec3(0.0, 0.0, 0.0);
 
   float cube = fBox(rotateSpace, vec3(0.1));
-  float box1 = fBox(box1space, vec3(0.5, 0.5, 0.5));
-  float box2 = fBox(box2space, vec3(0.5, 0.5, 0.5));
-  float box3 = fBox(box3space, vec3(0.5, 0.5, 0.5));
-  float box4 = fBox(box4space, vec3(0.5, 0.5, 0.5));
-  float box5 = fBox(box5space, vec3(0.5, 0.5, 0.5));
-  float box6 = fBox(box6space, vec3(0.5, 0.5, 0.5));
-  float box7 = fBox(box7space, vec3(0.5, 0.5, 0.5));
+  float box1 = fBox(box1space, vec3(0.5));
+  float box2 = fBox(box2space, vec3(0.5));
+  float box3 = fBox(box3space, vec3(0.5));
+  float box4 = fBox(box4space, vec3(0.5));
+  float box5 = fBox(box5space, vec3(0.5));
+  float box6 = fBox(box6space, vec3(0.5));
+  float box7 = fBox(box7space, vec3(0.5));
 
   // Combine objects
   field = MAX_DIST;

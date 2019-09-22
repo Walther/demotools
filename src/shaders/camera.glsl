@@ -26,7 +26,7 @@ vec3 camera() {
 
     diffuse = max(0.0, dot(-rayDir, normal));
     specular = pow(diffuse, 32.0);
-    color += max(
+    color /= max(
       vec3(
         diffuse*distanceFalloff +
         specular*distanceFalloff
