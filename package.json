@@ -4,7 +4,8 @@
   "description": "`demotool` is a minimalistic tool for making WebGL intros. It aims to have as little javascript as possible, while providing you with a WebGL context to draw your shaders on. It also provides a minimal tracker for creating music.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "./node_modules/webpack-cli/bin/cli.js --watch",
+    "build": "./node_modules/webpack-cli/bin/cli.js build && ./pnginator.rb dist/main.js dist/packed.png.html"
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,9 @@
   "homepage": "https://github.com/Walther/demotool#readme",
   "dependencies": {},
   "devDependencies": {
-    "@babel/preset-env": "^7.3.4",
-    "webpack": "^4.29.6",
+    "@babel/preset-env": "^7.25.4",
+    "webpack": "^5",
+    "webpack-cli": "^5",
     "webpack-glsl-loader": "^1.0.1"
   }
 }

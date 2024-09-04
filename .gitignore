@@ -37,3 +37,4 @@ jspm_packages
 bundle.js
 
 dist/main.js
+dist/packed.png.html

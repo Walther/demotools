@@ -4,9 +4,10 @@
 
 ## Usage
 
-- `yarn`
-- `webpack --watch`
+- `npm i`
+- `npm start`
 - open `./dist/index.html` in your favourite browser
+- `npm run build` for creating a packed `.png.html` file
 
 ## Optional optimization
 
